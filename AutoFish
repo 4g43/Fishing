@@ -10,9 +10,9 @@ spawn(function()
         end)
 
         -- auto fish
-        sapwn(function ()
+        sapwn(function()
             function autoFishA()
-                while task.wait() and Config.autoFishA do
+                while task.wait() do
                     local x = math.random(10, 20)
                     local z = math.random(10, 20)
 
