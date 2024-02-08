@@ -123,5 +123,4 @@ spawn(function()
         spawn(function()
             game:GetService("RunService"):Set3dRenderingEnabled(false)
         end)
-
 end)
