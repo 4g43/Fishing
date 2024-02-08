@@ -11,9 +11,6 @@ spawn(function()
 
         -- auto fish
         sapwn(function ()
-            spawn(autoFishA)
-                wait()
-                    print("AutoFishEnabled")
             function autoFishA()
                 while task.wait() and Config.autoFishA do
                     local x = math.random(10, 20)
@@ -61,6 +58,9 @@ spawn(function()
                     task.wait()
                 end
             end
+            spawn(autoFishA)
+                wait()
+                    print("AutoFishEnabled")
         end)
 
         -- Auto collect hidden presents
@@ -95,8 +95,6 @@ spawn(function()
 
         -- antiafk
         spawn(function()
-            spawn(antiAFK)
-            spawn(antiAFKN)
             function antiAFK()
                 local VirtualInputManager = game:GetService("VirtualInputManager")
                 while task.wait() do
@@ -116,6 +114,9 @@ spawn(function()
                         vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
                     end)
             end
+
+            spawn(antiAFK)
+            spawn(antiAFKN)
         end)
 
         -- disable 3d rendering
