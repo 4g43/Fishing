@@ -1,5 +1,6 @@
 spawn(function()
     repeat wait() until game:IsLoaded()
+        wait(60)
         -- auto tp to fishing area
         spawn(function()
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
