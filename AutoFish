@@ -12,6 +12,7 @@ spawn(function()
 
         -- auto fish
         spawn(function()
+            wait(20)
             function autoFishA()
                 while task.wait() do
                     local x = math.random(10, 20)
