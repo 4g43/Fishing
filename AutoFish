@@ -96,6 +96,14 @@ spawn(function()
 
         -- antiafk
         spawn(function()
+            function AutoRejoinWhenKicked()
+                game.Players.PlayerRemoving: connect (function (plr)
+                    if plr == game.Players.LocalPlayer then
+                      game:GetService('TeleportService'):Teleport(game.PlaceId)
+                    end
+                end)
+            end
+
             function antiAFK()
                 local VirtualInputManager = game:GetService("VirtualInputManager")
                 while task.wait() do
@@ -116,6 +124,7 @@ spawn(function()
                     end)
             end
 
+            spawn(AutoRejoinWhenKicked)
             spawn(antiAFK)
             spawn(antiAFKN)
         end)
