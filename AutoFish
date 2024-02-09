@@ -77,14 +77,25 @@ spawn(function()
             function GetPresents()
                 for i, Present in pairs(game.Workspace.__THINGS:WaitForChild("HiddenPresents"):GetChildren()) do
                     if Present.Name == "HiddenPresent" then
+                        humanoid = game.Players.LocalPlayer.Character.HumanoidRootPart
+                        CurrentPos = CFrame.new(1451.55115, 66.0670776, -4446.53857, 0.266156971, -1.72404135e-09, -0.963929713, -2.23902874e-09, 1, -2.4067881e-09, 0.963929713, 2.79884982e-09, 0.266156971)
+                        newCFrame = CFrame.new(1338.43958, 64.9407578, -4443.1792, -0.225546032, -1.98863017e-05, 0.974232495, 5.62326932e-05, 1, 3.34307915e-05, -0.974232495, 6.2323903e-05, -0.225546032)
+                        
+                        humanoid.CFrame = newCFrame
+                        repeat wait() until not Present
+                        humanoid.CFrame = CFrame.new(-180.852783203125, 117.92350006103516, 5175.45703125)
+                        wait(3)
+                        humanoid.CFrame = CurrentPos
                         local Id = "ID_"..tostring(Round6(Present.CFrame.x)).."_"..tostring(Round6(Present.CFrame.y)).."_"..tostring(Round6(Present.CFrame.z))
                         local x,y,z = CollectPresent(Id)
-                        Present:Destroy()
                     end
                 end
             end
 
             spawn(function()
+                if not game:IsLoaded() then
+                    game.Loaded:Wait()
+                end
                 while task.wait(1) do
                     GetPresents()
                 end    
