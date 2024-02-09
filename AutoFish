@@ -79,7 +79,6 @@ spawn(function()
                     if Present.Name == "HiddenPresent" then
                         local Id = "ID_"..tostring(Round6(Present.CFrame.x)).."_"..tostring(Round6(Present.CFrame.y)).."_"..tostring(Round6(Present.CFrame.z))
                         local x,y,z = CollectPresent(Id)
-                        repeat wait() until not Present
                     end
                 end
             end
