@@ -1,18 +1,16 @@
 spawn(function()
-    repeat wait() until game:IsLoaded()
-        wait(60)
+    if not game:IsLoaded() then
+        game.Loaded:Wait()
+    end
         -- auto tp to fishing area
-        spawn(function()
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
                 CFrame.new(-180.852783203125, 117.92350006103516, 5175.45703125)
             wait(3)
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
                 CFrame.new(1451.55115, 66.0670776, -4446.53857, 0.266156971, -1.72404135e-09, -0.963929713, -2.23902874e-09, 1, -2.4067881e-09, 0.963929713, 2.79884982e-09, 0.266156971)
-        end)
 
         -- auto fish
-        spawn(function()
-            wait(20)
+            wait(10)
             function autoFishA()
                 while task.wait() do
                     local x = math.random(10, 20)
@@ -63,10 +61,8 @@ spawn(function()
             spawn(autoFishA)
                 wait()
                     print("AutoFishEnabled")
-        end)
 
         -- Auto collect hidden presents
-        spawn(function()
             local Lib = require(game.ReplicatedStorage.Library.Client)
 
             function CollectPresent(Id)
@@ -93,10 +89,9 @@ spawn(function()
                     GetPresents()
                 end    
             end)
-        end)
+
 
         -- antiafk
-        spawn(function()
             function AutoRejoinWhenKicked()
                 game.Players.PlayerRemoving: connect (function (plr)
                     if plr == game.Players.LocalPlayer then
@@ -128,10 +123,7 @@ spawn(function()
             spawn(AutoRejoinWhenKicked)
             spawn(antiAFK)
             spawn(antiAFKN)
-        end)
 
         -- disable 3d rendering
-        spawn(function()
             game:GetService("RunService"):Set3dRenderingEnabled(false)
-        end)
 end)
